@@ -6,10 +6,15 @@ class Home extends React.Component {
     super(props);
     this.state = { user: '', password: '' };
     this.login = this.login.bind(this);
+    this.inputUser = React.createRef();
+    this.inputPassword = React.createRef();
   }
 
   login() {
-    this.setState({ user: 'Manu', password: '1234' });
+    this.setState({
+      user: this.inputUser.current.value,
+      password: this.inputPassword.current.value,
+    });
   }
   render() {
     if (
@@ -30,7 +35,11 @@ class Home extends React.Component {
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Correo Electrónico</Form.Label>
-                <Form.Control type="email" placeholder="Introfuce tu correo" />
+                <Form.Control
+                  type="email"
+                  placeholder="Introduce tu correo"
+                  ref={this.inputUser}
+                />
                 <Form.Text className="text-muted">
                   No compartas tu correo con nadie
                 </Form.Text>
@@ -41,6 +50,7 @@ class Home extends React.Component {
                 <Form.Control
                   type="password"
                   placeholder="Introduce tu contraseña"
+                  ref={this.inputPassword}
                 />
                 <Form.Text className="text-muted">
                   No compartas tu contraseña con nadie

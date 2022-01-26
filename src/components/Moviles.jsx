@@ -1,6 +1,8 @@
 import React from 'react';
+import uuid from 'react-uuid';
 import { Card, Container, Table, Row, Col } from 'react-bootstrap';
 import { TitulosTablaMoviles, DatosTablaMoviles } from '../data/DatosMoviles';
+import './moviles.css';
 
 class Moviles extends React.Component {
   constructor(props) {
@@ -32,9 +34,12 @@ class Moviles extends React.Component {
         <Container>
           <Row>
             <Col lg={8} md={6}>
-              <Table responsive striped>
+             <Table responsive striped hover>
                 <thead>
-                  <tr>
+                <tr
+                   key={uuid()}
+                   onClick={() => this.changeSelected(item)}
+                      >
                     <th>{TitulosTablaMoviles.id}</th>
                     <th>{TitulosTablaMoviles.field1}</th>
                     <th>{TitulosTablaMoviles.field2}</th>
@@ -57,7 +62,7 @@ class Moviles extends React.Component {
             </Col>
             <Col lg={4} md={6}>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={this.state.imagenPulsado} />
+              <Card.Img variant="top" src={this.state.imagenPulsado} />
                 <Card.Body>
                   <Card.Title>{this.state.marcaPulsado}</Card.Title>
                   <Card.Text>

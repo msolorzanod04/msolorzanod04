@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Container, Table, Row, Col } from 'react-bootstrap';
 import { TitulosTablaMoviles, DatosTablaMoviles } from '../data/DatosMoviles';
+
 class Moviles extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,7 @@ class Moviles extends React.Component {
       modeloPulsado: DatosTablaMoviles[0].modelo,
       colorPulsado: DatosTablaMoviles[0].color,
       descripcionPulsado: DatosTablaMoviles[0].descripción,
-      imagenPulsado: DatosTablaMoviles[0].imagen
+      imagenPulsado: DatosTablaMoviles[0].imagen,
     };
   }
 
@@ -21,9 +22,8 @@ class Moviles extends React.Component {
       modeloPulsado: item.modelo,
       colorPulsado: item.color,
       descripcionPulsado: item.descripción,
-      imagenPulsado: item.imagen
+      imagenPulsado: item.imagen,
     });
-
   }
   render() {
     return (
@@ -44,7 +44,7 @@ class Moviles extends React.Component {
                 <tbody>
                   {DatosTablaMoviles.map((item) => {
                     return (
-                      <tr onClick={ () => this.changeStateClicked(item)}>
+                      <tr onClick={() => this.changeStateClicked(item)}>
                         <td>{item.referencia}</td>
                         <td>{item.marca}</td>
                         <td>{item.modelo}</td>
@@ -59,9 +59,7 @@ class Moviles extends React.Component {
               <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={this.state.imagenPulsado} />
                 <Card.Body>
-                  <Card.Title>
-                    {this.state.marcaPulsado}
-                  </Card.Title>
+                  <Card.Title>{this.state.marcaPulsado}</Card.Title>
                   <Card.Text>
                     Referencia: {this.state.referenciaPulsado}
                     <p />

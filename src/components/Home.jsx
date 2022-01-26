@@ -16,11 +16,19 @@ class Home extends React.Component {
       password: this.inputPassword.current.value,
     });
   }
+
+  componentDidMount() {
+    this.setState({
+      user: localStorage.getItem('user'),
+      password: localStorage.getItem('password'),
+    });
+  }
+
   render() {
     if (
-      this.state != null &&
-      this.state.user != null &&
-      this.state.user != ''
+      this.state !== null &&
+      this.state.user !== null &&
+      this.state.user !== ''
     ) {
       return (
         <div className="main-site">
@@ -34,39 +42,38 @@ class Home extends React.Component {
           <Container>
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Correo Electrónico</Form.Label>
+                <Form.Label>Nombre de usuario o email: </Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Introduce tu correo"
+                  placeholder="Usuario"
                   ref={this.inputUser}
                 />
-                <Form.Text className="text-muted">
-                  No compartas tu correo con nadie
-                </Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Contraseña</Form.Label>
+                <Form.Label>Contraseña: </Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Introduce tu contraseña"
+                  placeholder="Contraseña"
                   ref={this.inputPassword}
                 />
-                <Form.Text className="text-muted">
-                  No compartas tu contraseña con nadie
-                </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Recordarme" />
               </Form.Group>
               <Button variant="primary" type="button" onClick={this.login}>
-                Acceder
+                Login
               </Button>
             </Form>
           </Container>
         </div>
       );
     }
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem('user', this.state.user);
+    localStorage.setItem('password', this.state.password);
   }
 }
 

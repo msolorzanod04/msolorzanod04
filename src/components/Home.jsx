@@ -17,7 +17,7 @@ class Home extends React.Component {
     });
   }
 
-  componentDidMount() {
+  componentDidUnmount() {
     this.setState({
       user: localStorage.getItem('user'),
       password: localStorage.getItem('password'),
@@ -39,30 +39,34 @@ class Home extends React.Component {
       return (
         <div className="main-site">
           <h1>Bienvenido!</h1>
+
           <Container>
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Nombre de usuario o email: </Form.Label>
+                <Form.Label>Correo Electronico</Form.Label>
                 <Form.Control
-                  type="email"
-                  placeholder="Usuario"
                   ref={this.inputUser}
+                  type="email"
+                  placeholder="Introduce tu correo"
                 />
+                <Form.Text className="text-muted">
+                  No compartiremos tu email con nadie
+                </Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Contraseña: </Form.Label>
+                <Form.Label>Contraseña</Form.Label>
                 <Form.Control
-                  type="password"
-                  placeholder="Contraseña"
                   ref={this.inputPassword}
+                  type="password"
+                  placeholder="Introduce la palabrita mágica"
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Recordarme" />
               </Form.Group>
               <Button variant="primary" type="button" onClick={this.login}>
-                Login
+                Submit
               </Button>
             </Form>
           </Container>
@@ -71,10 +75,9 @@ class Home extends React.Component {
     }
   }
 
-  componentWillUnmount() {
+  componentDidUnmount() {
     localStorage.setItem('user', this.state.user);
     localStorage.setItem('password', this.state.password);
   }
 }
-
 export default Home;

@@ -2,6 +2,7 @@ import Home from '../components/Home';
 import { PaginaListas } from '../components/PaginaListas';
 import Perfil from '../components/Perfil';
 import Moviles from '../components/Moviles';
+import SkinsMinecraft from '../components/PelisJuegosDisney'
 
 export const MenuItems = [
   {
@@ -28,6 +29,12 @@ export const MenuItems = [
     title: 'Moviles',
     component: Moviles,
   },
+  {
+    id: 5,
+    path: '/disney',
+    title: 'Pelis Disney',
+    component: SkinsMinecraft,
+  }
 ];
 
 /*
